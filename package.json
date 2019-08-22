@@ -4,8 +4,7 @@
   "description": "apipapakost",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./bin/www",
-    "start": "node ./bin/www",
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "papakost",
