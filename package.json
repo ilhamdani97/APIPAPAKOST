@@ -19,5 +19,11 @@
     "nodemon": "^1.19.1",
     "sequelize": "^5.15.0",
     "sequelize-cli": "^5.5.0"
-  }
+  },
+  
+    "engines" : { 
+      "node" : ">=8.0.0 <11.0.0" 
+    }
+  
 }
+
