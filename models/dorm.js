@@ -20,7 +20,10 @@ module.exports = (sequelize, DataTypes) => {
     created_by: DataTypes.INTEGER
   }, {});
   dorm.associate = function(models) {
-    // associations can be defined here
+    dorm.belongsTo(models.user, {
+      as: 'createdBy',
+      foreignKey: 'created_by',
+    })
   };
   return dorm;
 };
