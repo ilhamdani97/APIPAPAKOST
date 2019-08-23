@@ -21,10 +21,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   dorm.associate = function(models) {
     // associations can be defined here
-    dorm.belongsTo(models.user,{
-      as:'createdBy',
-      foreignKey:'created_by'
-    })
   };
   return dorm;
 };
