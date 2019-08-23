@@ -1,3 +1,4 @@
+const jsonWebToken = require('jsonwebtoken')
 const models = require('../models')
 const User = models.user
 
@@ -11,9 +12,11 @@ exports.show = (req, res) => {
 
 exports.store = (req, res) => {
     User.create(req.body).then(user=> {
+        const key = jsonWebToken.sign({userId:user.id}, 'haiiii-ini-rahasia-loh')
         res.send({
             message: "success",
-            user
+            user,
+            key
         })
     })
 }

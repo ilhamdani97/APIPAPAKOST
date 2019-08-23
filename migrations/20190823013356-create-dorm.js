@@ -51,10 +51,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       latitude: {
-        type: Sequelize.STRING
+        type: Sequelize.DOUBLE
       },
       longitude: {
-        type: Sequelize.STRING
+        type: Sequelize.DOUBLE
       },
       created_by: {
         type: Sequelize.INTEGER,

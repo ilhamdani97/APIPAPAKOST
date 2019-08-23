@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     provinsi: DataTypes.STRING,
     kabupaten: DataTypes.STRING,
     kecamatan: DataTypes.STRING,
-    latitude: DataTypes.STRING,
-    longitude: DataTypes.STRING,
+    latitude: DataTypes.DOUBLE,
+    longitude: DataTypes.DOUBLE,
     created_by: DataTypes.INTEGER
   }, {});
   dorm.associate = function(models) {
