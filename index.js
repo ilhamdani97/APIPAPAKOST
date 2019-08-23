@@ -41,5 +41,5 @@ app.group("/api", (router) => {
     router.delete('/dorm/:id', authenticated, DetailController.delete)
 })
 
-
+app.get('/', (req, res) => res.send('API PAPA KOST!'))
 app.listen(PORT, () => console.log(`Listening on port ${PORT}!`))
