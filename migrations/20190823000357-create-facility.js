@@ -11,10 +11,10 @@ module.exports = {
       wifi: {
         type: Sequelize.BOOLEAN
       },
-      wc: {
+      ac: {
         type: Sequelize.BOOLEAN
       },
-      ac: {
+      wc: {
         type: Sequelize.BOOLEAN
       },
       access_key: {

@@ -18,30 +18,18 @@ module.exports = {
         type: Sequelize.STRING
       },
       stock_room: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       rate: {
         type: Sequelize.INTEGER
       },
-      image: {
-        type: Sequelize.STRING
-      },
-      // facility: {
-      //   type: Sequelize.INTEGER
-      // },
       size: {
         type: Sequelize.STRING
       },
-      provinsi: {
-        type: Sequelize.STRING
-      },
-      kabupaten: {
-        type: Sequelize.STRING
-      },
-      kecamatan: {
-        type: Sequelize.STRING
-      },
       description: {
+        type: Sequelize.STRING
+      },
+      image: {
         type: Sequelize.STRING
       },
       booking_availabel: {
@@ -53,11 +41,20 @@ module.exports = {
       type: {
         type: Sequelize.STRING
       },
+      provinsi: {
+        type: Sequelize.STRING
+      },
+      kabupaten: {
+        type: Sequelize.STRING
+      },
+      kecamatan: {
+        type: Sequelize.STRING
+      },
       latitude: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       longitude: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       created_by: {
         type: Sequelize.INTEGER,
