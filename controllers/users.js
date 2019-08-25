@@ -48,7 +48,7 @@ exports.store = (req, res) => {
     }
     if(!password) {
         return res.status(400).json({
-            message: 'User Name Cannot be Null'
+            message: 'Password Cannot be Null'
         })
     }
     User.create(req.body).then(user => {
