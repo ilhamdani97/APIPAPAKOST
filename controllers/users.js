@@ -40,6 +40,17 @@ exports.show = (req, res) => {
 }
 
 exports.store = (req, res) => {
+    const {user_name,password} = req.body
+    if (!user_name) {
+        return res.status(400).json({
+            message: 'User Name Cannot be Null'
+        });
+    }
+    if(!password) {
+        return res.status(400).json({
+            message: 'User Name Cannot be Null'
+        })
+    }
     User.create(req.body).then(user => {
         const token = jsonWebToken.sign({ userId: user.id }, 'haiiii-ini-rahasia-loh')
         res.status(200).send({

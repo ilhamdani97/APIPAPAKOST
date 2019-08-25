@@ -1,16 +1,32 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const dorm = sequelize.define('dorm', {
-    name_kost: DataTypes.STRING,
-    address_kost: DataTypes.STRING,
+    name_kost: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false
+    },
+    address_kost: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false
+    },
+    stock_room: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false
+    },
+    price: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false
+    },
     detail_kost: DataTypes.STRING,
-    stock_room: DataTypes.STRING,
     rate: DataTypes.INTEGER,
     size: DataTypes.STRING,
     description: DataTypes.STRING,
     image: DataTypes.STRING,
     booking_availabel: DataTypes.STRING,
-    price: DataTypes.INTEGER,
     type: DataTypes.STRING,
     provinsi: DataTypes.STRING,
     kabupaten: DataTypes.STRING,
