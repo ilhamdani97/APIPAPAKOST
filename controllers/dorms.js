@@ -1,7 +1,7 @@
 const models = require('../models')
 const Dorms = models.dorm
 const User = models.user
-
+const jwt = require('jsonwebtoken')
 exports.index = (req, res) => {
     Dorms.findAll({
         include: [{
@@ -52,7 +52,10 @@ exports.show = (req, res) => {
 }
 
 exports.store = (req, res) => {
-    const {name_kost,address_kost,stock_room,price} = req.body
+    let token = req.headers['authorization']
+    token = token.split(' ')[1]
+    const user = jwt.verify(token, 'haiiii-ini-rahasia-loh')
+    const { name_kost, address_kost, stock_room, price } = req.body
     if (!name_kost) {
         return res.status(400).json({
             message: 'Name Dorms Cannot be Null'
@@ -73,19 +76,38 @@ exports.store = (req, res) => {
             message: 'Price Rooms Cannot be Null'
         });
     }
-    Dorms.create(req.body)
-    .then(dorm => {
-        if (dorm) {
-            return res.status(200).json({
-                message: 'Success Add Data Dorm',
-                data: dorm
-            })
-        } else {
-            return res.status(500).json({
-                message: 'Failed Add data dorm',
-            })
-        }
-    })
+    const data = {
+        name_kost: req.body.name_kost,
+        address_kost: req.body.address_kost,
+        stock_room: req.body.stock_room,
+        price: req.body.price,
+        detail_kost: req.body.detail_kost,
+        rate: req.body.rate,
+        size: req.body.size,
+        description: req.body.description,
+        image: req.body.image,
+        booking_availabel: req.body.booking_availabel,
+        type: req.body.type,
+        provinsi: req.body.provinsi,
+        kabupaten: req.body.kabupaten,
+        kecamatan: req.body.kecamatan,
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
+        created_by: user.userId,
+    }
+    Dorms.create(data)
+        .then(dorm => {
+            if (dorm) {
+                return res.status(200).json({
+                    message: 'Success Add Data Dorm',
+                    data: dorm
+                })
+            } else {
+                return res.status(500).json({
+                    message: 'Failed Add data dorm',
+                })
+            }
+        })
 }
 // //Update Dorms
 // exports.update = (req, res) => {
