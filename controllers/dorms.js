@@ -2,6 +2,9 @@ const models = require('../models')
 const Dorms = models.dorm
 const User = models.user
 const jwt = require('jsonwebtoken')
+const multer  = require('multer')
+
+
 exports.index = (req, res) => {
     Dorms.findAll({
         include: [{
@@ -76,6 +79,30 @@ exports.store = (req, res) => {
             message: 'Price Rooms Cannot be Null'
         });
     }
+
+    storage = multer.diskStorage({
+        destination: (req, file, cb) => {
+          cb(null, '../src/public/images');
+        },
+        filename: (req, file, cb) => {
+          console.log(file);
+          var filetype = '';
+          if(file.mimetype === 'image/gif') {
+            filetype = 'gif';
+          }
+          if(file.mimetype === 'image/png') {
+            filetype = 'png';
+          }
+          if(file.mimetype === 'image/jpeg') {
+            filetype = 'jpg';
+          }
+          cb(null, 'image-' + Date.now() + '.' + filetype);
+        }
+    });
+    
+
+
+
     const data = {
         name_kost: req.body.name_kost,
         address_kost: req.body.address_kost,
