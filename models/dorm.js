@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     rate: DataTypes.INTEGER,
     size: DataTypes.STRING,
     description: DataTypes.STRING,
-    image: DataTypes.STRING,
+    image: DataTypes.TEXT,
     booking_availabel: DataTypes.STRING,
     type: DataTypes.STRING,
     provinsi: DataTypes.STRING,

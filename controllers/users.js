@@ -27,12 +27,12 @@ exports.show = (req, res) => {
         attributes: ['full_name', 'email', 'no_tlp']
     }).then(user => {
         if (user) {
-            return res.status(200).json({
+            return res.send({
                 message: 'Success get Data User',
                 data: user
             })
         } else {
-            return res.status(500).json({
+            return res.send({
                 message: 'Failed get data User',
             })
         }
@@ -42,12 +42,12 @@ exports.show = (req, res) => {
 exports.store = (req, res) => {
     const {user_name,password} = req.body
     if (!user_name) {
-        return res.status(400).json({
+        return res.send({
             message: 'User Name Cannot be Null'
         });
     }
     if(!password) {
-        return res.status(400).json({
+        return res.send({
             message: 'Password Cannot be Null'
         })
     }

@@ -3,8 +3,6 @@ const Dorms = models.dorm
 const User = models.user
 const jwt = require('jsonwebtoken')
 const multer  = require('multer')
-
-
 exports.index = (req, res) => {
     Dorms.findAll({
         include: [{
@@ -17,12 +15,12 @@ exports.index = (req, res) => {
         }
     }).then(dorm => {
         if (dorm) {
-            return res.status(200).json({
+            return res.send({
                 message: 'Success get Data Dorm',
                 data: dorm
             })
         } else {
-            return res.status(500).json({
+            return res.send({
                 message: 'Failed get data dorm',
             })
         }
@@ -47,7 +45,7 @@ exports.show = (req, res) => {
                 data: dorm
             })
         } else {
-            return res.status(500).json({
+            return res.send({
                 message: 'Failed get data dorm',
             })
         }
@@ -56,26 +54,25 @@ exports.show = (req, res) => {
 
 exports.store = (req, res) => {
     let token = req.headers['authorization']
-    token = token.split(' ')[1]
     const user = jwt.verify(token, 'haiiii-ini-rahasia-loh')
     const { name_kost, address_kost, stock_room, price } = req.body
     if (!name_kost) {
-        return res.status(400).json({
+        return res.send({
             message: 'Name Dorms Cannot be Null'
         });
     }
     if (!address_kost) {
-        return res.status(400).json({
+        return res.send({
             message: 'Address Cannot be Null'
         });
     }
     if (!stock_room) {
-        return res.status(400).json({
+        return res.send({
             message: 'Stock Rooms Cannot be Null'
         });
     }
     if (!price) {
-        return res.status(400).json({
+        return res.send({
             message: 'Price Rooms Cannot be Null'
         });
     }
@@ -100,9 +97,6 @@ exports.store = (req, res) => {
         }
     });
     
-
-
-
     const data = {
         name_kost: req.body.name_kost,
         address_kost: req.body.address_kost,
@@ -125,12 +119,12 @@ exports.store = (req, res) => {
     Dorms.create(data)
         .then(dorm => {
             if (dorm) {
-                return res.status(200).json({
+                return res.send({
                     message: 'Success Add Data Dorm',
                     data: dorm
                 })
             } else {
-                return res.status(500).json({
+                return res.send({
                     message: 'Failed Add data dorm',
                 })
             }

@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 require('express-group-routes')
 
 const app = express()
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3000
 
 app.use(bodyParser.json())
 
@@ -31,9 +31,9 @@ app.group("/api", (router) => {
     router.patch('/user/:id', authenticated, UserController.update)
     router.delete('/user/:id', authenticated, UserController.delete)
     //Api Detail
-    router.get('/dorms',authenticated, DetailController.index)
+    router.get('/dorms', DetailController.index)
     router.get('/dorm/:id', DetailController.show)
-    router.post('/dorm',authenticated, DetailController.store)
+    router.post('/dorm', DetailController.store)
     // router.patch('/dorm/:id', authenticated, DetailController.update)
     // router.delete('/dorm/:id', authenticated, DetailController.delete)
 })

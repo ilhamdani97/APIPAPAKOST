@@ -28,12 +28,12 @@ exports.showdetail = (req, res) => {
         }
     }).then(dorm => {
         if (dorm) {
-            return res.status(200).json({
+            return res.send({
                 message: 'Success Add Data Booking',
                 data: dorm
             })
         } else {
-            return res.status(500).json({
+            return res.send({
                 message: 'Failed Add data Booking',
             })
         }
@@ -56,12 +56,12 @@ exports.show = (req, res) => {
         }
     }).then(dorm => {
         if (dorm) {
-            return res.status(200).json({
+            return res.send({
                 message: 'Success Add Data Booking',
                 data: dorm
             })
         } else {
-            return res.status(500).json({
+            return res.send({
                 message: 'Failed Add data Booking',
             })
         }
